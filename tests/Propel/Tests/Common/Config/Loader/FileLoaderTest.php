@@ -365,14 +365,14 @@ class TestableFileLoader extends BaseFileLoader
     /**
      * @return void
      */
-    public function load($resource, $type = null)
+    public function load(mixed $resource, ?string $type = null)
     {
     }
 
     /**
      * @return void
      */
-    public function supports($resource, $type = null)
+    public function supports(mixed $resource, ?string $type = null)
     {
     }
 
