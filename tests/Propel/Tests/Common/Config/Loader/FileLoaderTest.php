@@ -363,18 +363,14 @@ class FileLoaderTest extends TestCase
 if (PHP_VERSION_ID >= 80000) {
   class TestableFileLoader extends BaseFileLoader
   {
-    /**
-     * @return void
-     */
-    public function load(mixed $resource, ?string $type = null)
+    public function load(mixed $resource, ?string $type = null): mixed
     {
+      return null;
     }
 
-    /**
-     * @return void
-     */
-    public function supports(mixed $resource, ?string $type = null)
+    public function supports(mixed $resource, ?string $type = null): bool
     {
+      return false;
     }
 
     /**
