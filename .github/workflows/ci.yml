@@ -129,6 +129,8 @@ jobs:
                   else
                     vendor/bin/phpunit -c tests/${{ matrix.db-type }}.phpunit.xml
                   fi
+              env:
+                SYMFONY_VERSION: ${{ matrix.symfony-version }}
 
             - name: Code Coverage Report
               if: success() && matrix.php-version == '7.4' && matrix.symfony-version == '5-max'

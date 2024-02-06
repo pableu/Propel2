@@ -360,7 +360,7 @@ class FileLoaderTest extends TestCase
     }
 }
 
-if (PHP_VERSION_ID >= 80000) {
+if (PHP_VERSION_ID >= 80000 && substr($_SERVER['SYMFONY_VERSION'], 0, 1) !==  '4') {
   class TestableFileLoader extends BaseFileLoader
   {
     public function load(mixed $resource, ?string $type = null): mixed
