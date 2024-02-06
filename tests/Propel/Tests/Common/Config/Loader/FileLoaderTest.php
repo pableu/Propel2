@@ -360,8 +360,9 @@ class FileLoaderTest extends TestCase
     }
 }
 
-class TestableFileLoader extends BaseFileLoader
-{
+if (PHP_VERSION_ID >= 80000) {
+  class TestableFileLoader extends BaseFileLoader
+  {
     /**
      * @return void
      */
@@ -384,6 +385,35 @@ class TestableFileLoader extends BaseFileLoader
      */
     public static function checkSupports($ext, $resource): bool
     {
+      return parent::checkSupports($ext, $resource);
+    }
+  }
+} else {
+  class TestableFileLoader extends BaseFileLoader
+  {
+    /**
+     * @return void
+     */
+    public function load($resource, $type = null)
+    {
+    }
+
+    /**
+     * @return void
+     */
+    public function supports($resource, $type = null)
+    {
+    }
+
+    /**
+     * @param string|string[] $ext
+     * @param mixed $resource
+     *
+     * @return bool
+     */
+    public static function checkSupports($ext, $resource): bool
+    {
         return parent::checkSupports($ext, $resource);
     }
+  }
 }
