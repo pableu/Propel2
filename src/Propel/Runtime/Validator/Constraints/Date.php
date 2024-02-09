@@ -10,10 +10,7 @@ namespace Propel\Runtime\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraints\Date as SymfonyDateConstraint;
 
-if (
-    ($_ENV['PHPSTAN'] ?? 0) != 1
-    && (new \ReflectionProperty(SymfonyDateConstraint::class, 'message'))->hasType()
-) {
+if ((new \ReflectionProperty(SymfonyDateConstraint::class, 'message'))->hasType()) {
   class Date extends SymfonyDateConstraint
   {
     public string $message = 'This value is not a valid date.';

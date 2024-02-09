@@ -6,6 +6,9 @@ parameters:
     reportUnmatchedIgnoredErrors: false
     paths:
         - '%rootDir%/../../../src/'
+    excludePaths:
+        analyseAndScan:
+            - src/Propel/Runtime/Validator/Constraints/Date.php
     ignoreErrors:
         - '#Call to an undefined method .+Collection::.+Array\(\)#'
         - '#Call to an undefined method object::.+\(\)#'
