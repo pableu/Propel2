@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints\Date as SymfonyDateConstraint;
 if ((new \ReflectionProperty(SymfonyDateConstraint::class, 'message'))->hasType()) {
   class Date extends SymfonyDateConstraint
   {
+    /** @phpstan-ignore-next-line */
     public string $message = 'This value is not a valid date.';
 
     public string $column = '';
