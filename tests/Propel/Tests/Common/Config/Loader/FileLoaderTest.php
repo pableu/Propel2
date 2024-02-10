@@ -180,8 +180,10 @@ class FileLoaderTest extends TestCase
     {
         $conf = $this->loader->resolveParams(['foo' => true, 'expfoo' => '%foo%', 'bar' => null, 'expbar' => '%bar%']);
 
-        $this->assertTrue($conf['expfoo'], '->resolve() replaces arguments that are just a placeholder by their value without casting them to strings');
-        $this->assertNull($conf['expbar'], '->resolve() replaces arguments that are just a placeholder by their value without casting them to strings');
+        $this->assertTrue($conf['expfoo'],
+            '->resolve() replaces arguments that are just a placeholder by their value without casting them to strings');
+        $this->assertNull($conf['expbar'],
+            '->resolve() replaces arguments that are just a placeholder by their value without casting them to strings');
     }
 
     /**
@@ -360,56 +362,56 @@ class FileLoaderTest extends TestCase
     }
 }
 
-if (PHP_VERSION_ID >= 80000 && substr($_SERVER['SYMFONY_VERSION'], 0, 1) !==  '4') {
-  class TestableFileLoader extends BaseFileLoader
-  {
-    public function load(mixed $resource, ?string $type = null): mixed
+if (PHP_VERSION_ID >= 80000 && substr($_SERVER['SYMFONY_VERSION'], 0, 1) !== '4') {
+    class TestableFileLoader extends BaseFileLoader
     {
-      return null;
-    }
+        public function load(mixed $resource, ?string $type = null): mixed
+        {
+            return null;
+        }
 
-    public function supports(mixed $resource, ?string $type = null): bool
-    {
-      return false;
-    }
+        public function supports(mixed $resource, ?string $type = null): bool
+        {
+            return false;
+        }
 
-    /**
-     * @param string|string[] $ext
-     * @param mixed $resource
-     *
-     * @return bool
-     */
-    public static function checkSupports($ext, $resource): bool
-    {
-      return parent::checkSupports($ext, $resource);
+        /**
+         * @param string|string[] $ext
+         * @param mixed $resource
+         *
+         * @return bool
+         */
+        public static function checkSupports($ext, $resource): bool
+        {
+            return parent::checkSupports($ext, $resource);
+        }
     }
-  }
 } else {
-  class TestableFileLoader extends BaseFileLoader
-  {
-    /**
-     * @return void
-     */
-    public function load($resource, $type = null)
+    class TestableFileLoader extends BaseFileLoader
     {
-    }
+        /**
+         * @return void
+         */
+        public function load($resource, $type = null)
+        {
+        }
 
-    /**
-     * @return void
-     */
-    public function supports($resource, $type = null)
-    {
-    }
+        /**
+         * @return void
+         */
+        public function supports($resource, $type = null)
+        {
+        }
 
-    /**
-     * @param string|string[] $ext
-     * @param mixed $resource
-     *
-     * @return bool
-     */
-    public static function checkSupports($ext, $resource): bool
-    {
-        return parent::checkSupports($ext, $resource);
+        /**
+         * @param string|string[] $ext
+         * @param mixed $resource
+         *
+         * @return bool
+         */
+        public static function checkSupports($ext, $resource): bool
+        {
+            return parent::checkSupports($ext, $resource);
+        }
     }
-  }
 }

@@ -8,27 +8,27 @@
 
 namespace Propel\Runtime\Validator\Constraints;
 
+use ReflectionProperty;
 use Symfony\Component\Validator\Constraints\Date as SymfonyDateConstraint;
 
-if ((new \ReflectionProperty(SymfonyDateConstraint::class, 'message'))->hasType()) {
-  class Date extends SymfonyDateConstraint
-  {
-    public string $message = 'This value is not a valid date.';
+if ((new ReflectionProperty(SymfonyDateConstraint::class, 'message'))->hasType()) {
+    class Date extends SymfonyDateConstraint
+    {
+        public string $message = 'This value is not a valid date.';
 
-    public string $column = '';
-  }
+        public string $column = '';
+    }
 } else {
-  class Date extends SymfonyDateConstraint
-  {
-    /**
-     * @var string
-     */
-    public $message = 'This value is not a valid date.';
+    class Date extends SymfonyDateConstraint
+    {
+        /**
+         * @var string
+         */
+        public $message = 'This value is not a valid date.';
 
-    /**
-     * @var string
-     */
-    public $column = '';
-  }
+        /**
+         * @var string
+         */
+        public $column = '';
+    }
 }
-
