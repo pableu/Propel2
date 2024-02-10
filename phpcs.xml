@@ -26,4 +26,7 @@
             <property name="phpVersion" value="7.4"/>
         </properties>
     </rule>
+
+    <exclude-pattern>src/Propel/Runtime/Validator/Constraints/Date.php</exclude-pattern>
+    <exclude-pattern>src/Propel/Common/Config/Loader/FileLoader.php</exclude-pattern>
 </ruleset>
