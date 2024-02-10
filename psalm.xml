@@ -38,5 +38,10 @@
                 <file name="src/Propel/Runtime/Parser/YamlParser.php" />
             </errorLevel>
         </ReservedWord>
+        <DuplicateClass errorLevel="suppress">
+            <errorLevel type="suppress">
+                <file name="src/Propel/Runtime/Validator/Constraints/Date.php" />
+            </errorLevel>
+        </DuplicateClass>
     </issueHandlers>
 </psalm>
